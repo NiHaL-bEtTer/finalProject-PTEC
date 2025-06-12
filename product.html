@@ -1,0 +1,551 @@
+    <!--
+    Name: Nihal Mrahar
+    Teacher: Ms. Hoitink
+    Course: WebDev-10s
+    School: Pembina Trails Collegiate
+    Date Last Modified : 6/12/2025
+
+    -->
+    
+    
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cart | Heritage</title>
+    <link rel="stylesheet" href="styles.css" /> <!--linking our stylsheets, scripts and the link to our font, inter-->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script src="nav-mnu.js" defer ></script>
+    <script src="main.js" defer></script>
+    <style>
+        .showcase-grid { /*makes it a grid, the first object takes 0.7 free space and the next takes 1 free spave*/
+        display: grid;
+        grid-template-columns: 0.7fr 1fr;
+        padding: 2px; /* basic stlying here*/
+        margin-left: 4%;
+        gap: 32px;
+        }
+        /*give the image a background color, then ehight padding and margin */
+        .showcase-grid img {
+        background-color: #f2f2f1;
+        padding: 25px;
+        height: 80%;
+        margin: 0.35%;
+        }
+
+        .product-preview img { /*makes the image in inside the product preview div take 100% heigth*/
+        height: 100px;
+        }
+        /* styles the add to bag and checkout button*/
+        #add-to-bag, #checkout {
+        padding: 15px;
+        border: none;
+        width: 50%;
+        border-radius: 5px;
+        }
+        /* styles the backgrounds and text colors for the 2 buttons mentioned above*/
+        #add-to-bag {
+        background-color: #9acbd0;
+        color: black;
+        }
+
+        #checkout {
+        background-color: #f2f2f1;
+        color: black;
+        }
+        /* styles the element with the id of buttons with simple */
+        #buttons {
+        display: flex;
+        gap: 5%;
+        margin-right: 2%;
+        margin-top: 20px;
+        }
+
+        
+        /*sets font size for list item inside sizes*/
+        #sizes li {
+        font-size: 1.25rem;
+        }
+        /*adding padding for the padding info*/
+        .product-info {
+        padding: 20px;
+        }
+        /*basic stlying for the product image*/
+        .product-image {
+        display: flex;
+        gap: 15px;
+        padding: 20px;
+        }
+        /*changes the font weight for the text class*/
+        .text {
+        font-weight: 500;
+        }
+        /*adds text styles and margin*/
+        .shipping {
+        font-weight: 350;
+        font-size: 1.25rem;
+        margin-top: 7%;
+        
+
+        }
+        /*makes teh ad details a flex box and it to be a column that has ots order reversed, aligns the text to left and adds some other basic styles*/
+        .ad-details {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-top: 0px;
+        text-align: left;
+        margin: 0;
+        padding: 0px;
+        }
+        /*again basic styles and adds a ease transtion to the border color*/
+        .ad-details li {
+        font-size: 1.45rem;
+        font-weight: 600;
+        margin-top: 30px;
+        transition: border-color 0.3s ease;
+        cursor: pointer;
+        
+        }
+        /*makes the text bold on hover*/
+        .ad-details li:hover {
+            font-weight: bold;
+        }
+        /*rotates all spans 90deg*/
+        span {
+            transform: rotate(90deg);
+        }
+        /*gives teh body a  margin top of 130px for space for the header*/
+        body {
+        margin-top: 130px;
+        }
+        /*adds margin, padding and transiton of transform ease to the section*/
+        .recommendation-section {
+        padding: 0px 10%;
+        transition: transform 0.5s ease;
+        margin-top: 1%;
+        }
+        /*basic styles for the h1 inside rhe recomendation section*/
+        .recommendation-section h1 {
+        font-size: 3rem;
+        margin-bottom: 50px;
+        text-align: center;
+        font-weight: 400;
+        margin-top: 0px;
+        }
+        /*makes a grid inside the recomendation section, same as the article grid, 4 coloums 1 fr, adds gap and margin padding and basic styles*/
+        .recommendation-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+        align-items: stretch;
+        padding: 25px;
+        margin-left: 5%;
+        margin-bottom: 80px;
+        }
+        /*addomg flexbox and alignments, added transitons*/
+        .recommendation-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: transform 0.3s ease;
+        }
+        /*setting the width and height for the img, adding a background color and basically same styles as the other part like this */
+        .recommendation-item img {
+        width: 100%;
+        height: 35vh;
+        background-color: #f2f2f1;
+        padding: 16px;
+        object-fit: cover;
+        display: block;
+        }
+        /*simple styling for the recomendation info*/
+        .recommendation-info {
+        padding-top: 12px;
+        }
+        /*again basic stylin for the h3 inside the reco info*/
+        .recommendation-info h3 {
+        font-size: 1.6rem;
+        margin: 0;
+        font-weight: 500;
+        color: #333;
+        }
+        /*same thing here but for the p*/
+        .recommendation-info p {
+        font-size: 1.4rem;
+        margin: 6px 0 0;
+        color: #666;
+        }
+        /*adds padding to the button, border and rounds it, adds backgroumd color, sets the width */
+        .option-button {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #9acbd0;
+        background-color: white;
+        margin-top: 10px;
+        width: 100%;
+        }
+        /*another media query for the same purpose, basically the same but makes it only have 1 thing on each line and wrap other items for responsiveness*/
+        @media (max-width: 1279px) {
+        .recommendation-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        }
+        /*add more here*/
+        @media (max-width: 1023px) {
+        .recommendation-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .showcase-grid {
+            grid-template-columns: 1fr;
+            margin-left: 0;
+        }
+        }
+
+        @media (max-width: 767px) {
+        .recommendation-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .product-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #buttons {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+        }
+        }
+        /*this is the styles for the cart aside, the position is fixed so it stays on the same plave*/
+        .cart-sidebar {
+        position: fixed;
+        top: 0; /* no space at the top*/
+        right: -100%; /* makes it off of the page bc 100% right*/
+        width: 320px; /*sets the width and height*/
+        height: 100vh;
+        background-color: #fbfaf8; /*backgground color, box shadow and border left for the other secton*/
+        border-left: 4px solid #9acbd0;
+        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        transition: right 0.3s ease-in-out; /*adds transtion*/
+        z-index: 999; /* makes it a column flexbox and aligns it space between*/
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        }
+
+        .cart-sidebar.active {
+        right: 0; /* when . active class is added after the button click, the right gets set to 0 so its on the page now*/
+        }
+        /*alignments for the header in teh cart*/
+        .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        /*basic styles for the close button*/
+        .close-btn {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        }
+        /*again basic styles for checkout button, setting background color, padding, margin, border radius and font size*/
+        .checkout-button {
+        background-color: #9acbd0;
+        border: none;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 1.6rem;
+        cursor: pointer;
+        margin-top: 20px;
+        }
+        /*setting backgroun color, no border, padding, rounds the object and colors and margin*/
+        .remove-all-button {
+            background-color: #f2f2f1;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.6rem;
+            cursor: pointer;
+            margin-top: 10px;
+            color: black;
+        }
+
+        /*aligning the text to the center*/
+        .cart-body {
+        text-align: center;
+        }
+
+        /*some basic styles*/
+        .cart-item-img {
+        display: block;
+        margin: 0 auto 1rem;
+        width: 70%;
+        }
+        /*mainly setting styles for the font for the label that is for size select */
+        label[for="sizeSelect"] {
+        font-size: 1.8rem;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 0.5rem;
+        }
+
+        /*again more basic styling for the select, padding , width, font size, border border radius and background color*/
+        #sizeSelect {
+        width: 150px;   
+        padding: 0.6rem 0.8rem;
+        font-size: 1.6rem;
+        border: 2px solid #9acbd0;
+        border-radius: 5px;
+        background: white;
+        color: #333;
+        cursor: pointer;
+        }   
+        /*if u hover on a preview then it adds a border */
+        #preview-1:hover,
+        #preview-2:hover,
+        #preview-3:hover, 
+        #preview-4:hover{
+            border: 2px solid #9acbd0;
+        }
+        /*makes the logo get biggeer when u hover*/
+        .logo:hover {
+        transform: scale(1.1);
+    }
+        /*add transform transitions ease*/
+        .logo {
+            transition: transform 0.3s ease;
+        }
+        /*another simple ease transition*/
+        .productImage {
+            transition: 0.5s ease;
+        }
+        /* makes the recomendation item scale like before*/
+        .recommendation-item:hover{
+            transform:scale(1.01);
+        }
+        /*bolds the content and makes it bigger*/ 
+        #styles.bold{
+                font-weight: 900;
+                font-size: 5rem;
+            }
+            /*just simple ease transition and a scale transform*/
+        #styles {
+            transition: 0.5s ease;
+        }
+
+        .recommendation-section.sigma{
+            transform: scale(1.1);
+        }
+
+        .display2 {
+            
+            margin-bottom: 40px;
+        }
+    </style>
+    </head>
+    <body>
+    <header> <!--this  is the header-->
+    <div class="header-content"> <!--contains all teh stuff inside the header-->
+            <button class="menu-toggle" aria-label="Toggle menu">☰</button> <!-- this is the hamburger menu, only appears on smaller screens-->
+            <nav class="main-nav"> <!--this nav is structured in multiple navs-->
+            <ul> <!--the first contains these list items that are quicklinks-->
+                <li><a href="under-construction.html">about us</a></li>
+                <li><a href="articles.html"></a>shop</li>
+                <li><a href="login-signup.html">login</a></li> <!--calls the funtion to go to the other page-->
+            </ul>
+            </nav>
+            <div class="logo-container"> <!--this is the heritage logo, if u click it, it takes u to articles.html-->
+            <a href="articles.html">
+                <img src="images/brand logo.png" alt="Heritage logo" class="logo">
+            </a>
+            </div>
+            <nav class="icon-menu"> <!--the next nav here contains icons such as the bag and login-->
+            <img src="images/free-user-icon-972-thumb.png" alt="this is a logo outline of a person, used for login" class="icons"onclick="verifyLogin()">
+            
+                <a href="checkout.html">
+                <img src="images/shopping-bag.svg" alt="bag" class="icons">
+            </a>
+            
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="showcase-grid"> <!--structured as a grid-->
+            <div class="product-image"> <!--the first object in the in teh grid is the image of teh product-->
+                <img  id="productImage" src="images/hoodie_back_larger.png" alt="this is a black hoodie with hertiage branding">
+            </div>  
+            <div class="product-info"> <!--the seconf object is the info of the product-->
+                <div class="price">
+                <h1 class="text">black heritage hoodie</h1> <!--tells u basic info u need in a h1 and h2-->
+                <h2 class="text"> $50</h2>
+                </div>
+                <div class="product-preview"> <!--basically different images that show different styles of the product, call change style function to change the productImage when u click on teh preview-->
+                <img id="preview-1" src="images/blank-hoodie.png" alt="grey heritage hoodie preview image" onclick="changeStyle();">
+                <img id="preview-2" src="images/hoodie_back_larger.png" alt="black heritage hoodie preview image"  onclick="changeStyle2();">
+                <img id="preview-3" src="images/blank-hoodie.png" alt="grey heritage preview image" onclick="changeStyle();">
+                <img  id="preview-4" src="images/hoodie_back_larger.png" alt="black heritage preview image"  onclick="changeStyle2();">
+                
+                </div>
+                <label for="sizeSelect">Size:</label> <!--this is a label for the select and a select, the select contains options that are different sizes of the product-->
+                <select id="sizeSelect">
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                </select>
+
+                <p class="shipping">free standard shipping for orders over $200 cad</p> <!--this part contains a p that informs the user about shipping and under it is a list that are quicklink teh thier respective topics but as for nw ther go to the under construction page-->
+                <ul class="ad-details">
+                <li><a href="under-construction.html">shipping & returns <span>></span></a></li>
+                <li><a href="under-construction.html">size guide <span>></span></a></li>
+                <li><a href="under-construction.html">details <span>></span></a></li>
+                </ul>
+                <div id="buttons"> <!--now here are 2 buttons the add to bag button which opens the cart and teh checkout button which takes u to the checkout.html-->
+                <button id="add-to-bag">add to bag</button>
+                <button id="checkout" onclick="window.location.href='checkout.html'" >checkout</button>
+            </div>
+        </div>
+        </div>
+
+        <div class="display2"> <!--this is basically the same as the new arivals div-->
+            <video src="images/20250612_1656_Heritage Hoodie Showcase_storyboard_01jxk29kxre4wbgzfwj8epe6a0.mp4" autoplay muted loop></video>
+        </div>
+
+        <section class="recommendation-section"> <!--this is a section for recomended items under the product page-->
+        <h1 id="styles">Styles You Might Like</h1> <!--starts with an h1 telling u that its styls u mgiht like-->
+        <div class="recommendation-grid">
+                <div class="recommendation-item">
+                    <a href="product.html"><img src="images/blank-hoodie.png" alt="image of a grey hoodie"></a> <!--contains an image that is wrapped in an anchor that leads to product.html-->
+                    <div class="recommendation-info">
+                        <h3>grey heritage hoodie</h3><!--tells u about the name and its price-->
+                        <p>$50</p>
+                        <a href="product.html"><button class="option-button">see options</button></a> <!--same thing here but now it is a button-->
+                    </div>
+                </div>
+
+                <div class="recommendation-item">
+                    <a href="product.html"><img src="images/blank-hoodie.png" alt="image of a grey hoodie"></a> <!--contains an image that is wrapped in an anchor that leads to product.html-->
+                    <div class="recommendation-info">
+                        <h3>grey heritage hoodie</h3><!--tells u about the name and its price-->
+                        <p>$50</p>
+                        <a href="product.html"><button class="option-button">see options</button></a> <!--same thing here but now it is a button-->
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <a href="product.html"><img src="images/blank-hoodie.png" alt="image of a grey hoodie"></a> <!--contains an image that is wrapped in an anchor that leads to product.html-->
+                    <div class="recommendation-info">
+                        <h3>grey heritage hoodie</h3><!--tells u about the name and its price-->
+                        <p>$50</p>
+                        <a href="product.html"><button class="option-button">see options</button></a> <!--same thing here but now it is a button-->
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <a href="product.html"><img src="images/blank-hoodie.png" alt="image of a grey hoodie"></a> <!--contains an image that is wrapped in an anchor that leads to product.html-->
+                    <div class="recommendation-info">
+                        <h3>grey heritage hoodie</h3><!--tells u about the name and its price-->
+                        <p>$50</p>
+                        <a href="product.html"><button class="option-button">see options</button></a> <!--same thing here but now it is a button-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+
+    <aside id="cartSidebar" class="cart-sidebar"> <!--this is the aside which is the cart, it opens when u click add to bag/add to cart-->
+        <div class="cart-header">
+            <h2>Your Cart</h2> <!--heading saying this is yo cart-->
+            <button id="closeCart" class="close-btn">X</button> <!--button that closes ur cart-->
+        </div>
+        <div class="cart-body"> <!--this is what makes up ur cart, imcludes the image, product name, the size selected, the quantity of items and the total amount of money, it is left empty as it is updated using javascript -->
+            <img id="cartImg" src="" alt="this is the image of the product that has been added to the cart" class="cart-item-img">
+            <h3 id="cartName"></h3>
+            <p id="cartSize"></p>
+            <p id="cartQty"></p>
+            <p id="cartTotal"></p>
+        </div>
+        <button id="clearCart" class="remove-all-button">Remove All</button> <!--this button removes everything from the cart and the button under takes u to checkout.html-->
+        <button class="checkout-button" onclick="window.location.href='checkout.html'"  >Checkout</button>
+    </aside>
+    </main>
+
+    <footer> <!--this ist he footer-->
+    
+    <div class="footer-top"> <!--this is the top of the footer and contains the heritage logo and a short description of the brand-->
+        <div class="brand-info">
+        <img src="images/brand logo.png" alt="Heritage Clothing logo" class="logo2" />
+        <p>taking you back to the roots</p>
+        </div>
+        
+        <div class="social-icons"> <!--this part of the footer contains icons that take u to the brands socials such as tiktokm insta, and youtube, images wrapped in anchors-->
+        <a href="https://www.youtube.com/">
+            <img src="images/youtube-logo-youtube-icon-transparent-free-png.webp" alt="YouTube" />
+        </a>
+        <a href="https://www.tiktok.com/">
+            <img src="images/tiktok-logo-thin.svg" alt="TikTok" />
+        </a>
+        <a href="https://www.instagram.com/">
+            <img src="images/black-and-white-outline-instagram-app-logo-icon-7017516951369307x990iaok2.png" alt="Instagram" />
+        </a>
+        </div>
+    </div>
+
+
+    <div class="footer-nav"> <!--this is a nav in the footer and contains the same things as the header-->
+        <ul>
+        <li><a href="articles.html">home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="login-signup.html">login</a></li>
+        <li><a href="checkout.html">Cart</a></li>
+        </ul>
+    </div>
+
+
+    <div class="footer-bottom"> <!--this is the bottom of teh foter and shows the copyright symbol and links to some of the companies policies-->
+        <ul class="footer-links">
+        <li><p>&copy; 2024 nihal all rights reserved.</p></li>
+        <li><p>all images were generated using chatgpt</p></li>
+        <li><a href="under-construction.html">Terms of use</a></li>
+        <li><a href="under-construction.html">Privacy policy</a></li>
+        <li><a href="under-construction.html">shipping and returns policy</a></li>
+        </ul>
+    </div>
+    </footer>
+
+
+    
+
+
+
+    <script src="cart.js" defer></script> <!--linking our cart sytstem javascript-->
+    <script defer> //inline script
+        function changeStyle () { //making a function that gets the element by id, id productImage and changes the src to blank hoodie and vise versa to the black hoodie, used with an onclick function call in the html
+            document.getElementById("productImage").src = "images/blank-hoodie.png";
+        }
+
+        function changeStyle2 () {
+            document.getElementById("productImage").src = "images/hoodie_back_larger.png";
+        }
+
+
+        
+    </script>
+
+
+
+    </body>
+    </html>

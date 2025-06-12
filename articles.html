@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart | Heritage</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+  <script src="nav-mnu.js" defer ></script>
+  <script src="main.js" defer></script>
+  <style>
+    
+    /*adding basic styles to when the header has the class of scroll*/
+    header.scroll {
+      border-bottom: 16px solid #9acbd0;
+      color: black;
+      background: white;
+    }
+    /*now we are making the color of our icons and things in our nav white, because it needs to show when its on the blackish dark transparent background and adding a transtion so it does so smoothly*/
+
+    .logo,
+    .icons,
+    nav #quixk-link,
+    nav #quixk-link{
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease, color 0.3s ease;
+    }
+    /*basicaly same thign here , just makeing them white*/
+
+    nav ul li,
+    nav ul li a {
+      color: white;
+    }
+
+    header.scroll .logo,
+    header.scroll .icons {
+      filter: none;
+    }
+
+    /*when we scroll then there is no filter*/
+
+
+    header.scroll nav ul li,
+    header.scroll nav ul li a,
+    header.scroll .main-nav ul li a {
+      color: black;
+    }
+
+
+
+    #new-arrivals * {
+      margin-top: 0;
+    }
+    /*idk why but it was giving me a gap at the top of new arivals so I just tried removing all teh margin at the top*/
+
+    /*this si alsmost the same as the normal header but here we are using a linear gradient as the background and a backdrop filter of blur, this only lasts for the start and when u scroll it goes back to the normal header*/
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px;
+      margin: 0px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.7) 25%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.3) 85%,
+        rgba(0, 0, 0, 0.1) 100%
+      );
+      z-index: 100;
+      transition: background 0.4s ease, border-bottom 0.4s ease;
+      backdrop-filter: blur(6px);
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <header> <!--the header is the same as the rest of teh pages-->
+  <div class="header-content">
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="under-construction.html">about us</a></li>
+        <li><a href="articles.html">shop</a></li>
+        <li><a href="login-signup.html">login</a></li>
+      </ul>
+    </nav>
+    <div class="logo-container">
+      <a href="articles.html">
+        <img src="/images/brand logo.png" alt="Heritage logo" class="logo">
+      </a>
+    </div>
+    <nav class="icon-menu">
+      
+      
+        <img src="images/free-user-icon-972-thumb.png" alt="this is a logo outline of a person, used for login" class="icons" onclick="verifyLogin()">
+      
+      
+      <a href="checkout.html">
+        <img src="images/shopping-bag.svg" alt="bag" class="icons">
+      </a>
+
+      
+    </nav>
+  </div>
+</header>
+
+  <main>
+    <div id="new-arrivals"> <!--here we have a div that has a background image and the info inside it is positioned relatively inside the div-->
+      <div class="display-info">
+        <h1>Discover Our New Arrivals</h1>
+        <button class="join-button"><a href="#grid">shop</a></button>
+      </div>
+    </div>
+
+    <div class="clothing-grid" id="grid"> <!--this is the main grid of clothing and is shown throughout the website almost-->
+      <div class="clothing-article"> <!--this is the clothing article, it contins an image wrapped in an anchor that takes u to product.html, and tells u the name of the aricle and price-->
+        <a href="product.html"><img src="images/blank-hoodie.png" alt="image of blank hoodie" /></a>
+        <div class="clothing-info"> <!--this is repeated multiplt times in this grid and thats about it -->
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/hoodie_back_larger.png" alt="image of hoodie back" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/blank-hoodie.png" alt="image of blank hoodie" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/hoodie_back_larger.png" alt="image of hoodie back" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/blank-hoodie.png" alt="image of blank hoodie" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/hoodie_back_larger.png" alt="image of hoodie back" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/blank-hoodie.png" alt="image of blank hoodie" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/hoodie_back_larger.png" alt="image of hoodie back" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/blank-hoodie.png" alt="image of blank hoodie" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/hoodie_back_larger.png" alt="image of hoodie back" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/blank-hoodie.png" alt="image of blank hoodie" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/hoodie_back_larger.png" alt="image of hoodie back" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="display"> <!--this is basically the same as the new arivals div-->
+      <div class="display-info">
+        <h1>Discover Our Best Sellers</h1>
+        <button class="join-button"><a href="#grid">shop</a></button>
+      </div>
+    </div>
+
+    <div class="clothing-grid" id="grid"> <!--again a grid, this is the same as the one before but there are only 4 articles inside this grid-->
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/blank-hoodie.png" alt="image of blank hoodie" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/hoodie_back_larger.png" alt="image of hoodie back" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/blank-hoodie.png" alt="image of blank hoodie" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+      <div class="clothing-article">
+        <a href="product.html"><img src="images/hoodie_back_larger.png" alt="image of hoodie back" /></a>
+        <div class="clothing-info">
+          <h2>Grey Heritage Hoodie</h2>
+          <h3>$45</h3>
+        </div>
+      </div>
+    </div>
+      <div class="display2"> <!--this is basically the same as the new arivals div-->
+        
+          <video src="images/20250612_1647_Hoodie Heritage Atmosphere_simple_compose_01jxk1rwpkepa9vs84z1hbtaen.mp4" autoplay muted loop>
+              
+          </video>
+          
+      </div>
+    </div>
+    <!--<div class="flag-display">
+      <div class="flag-holder">
+        <img src="baggy-green-pants.png" alt="jeans with green tint and embroidery" />
+        <div class="flag-info">
+          <h2>hi</h2>
+        </div>
+      </div>
+      <div class="flag-holder">
+        <img src="baggy-green-pants.png" alt="jeans with green tint and embroidery" />
+        <div class="flag-info">
+          <h2>hi</h2>
+        </div>
+      </div>
+      <div class="flag-holder">
+        <img src="baggy-green-pants.png" alt="jeans with green tint and embroidery" />
+        <div class="flag-info">
+          <h2>hi</h2>
+        </div>
+      </div>
+      <div class="flag-holder">
+        <img src="baggy-green-pants.png" alt="jeans with green tint and embroidery" />
+        <div class="flag-info">
+          <h2>hi</h2>
+        </div>
+      </div>
+    </div>-->
+  </main>
+
+  
+<footer> <!--the footer was already explained in product.html-->
+    
+    <div class="footer-top">
+        <div class="brand-info">
+        <img src="images/brand logo.png" alt="Heritage Clothing logo" class="logo2" />
+        <p>Short paragraph of the brand and what it represents.</p>
+        </div>
+        
+        <div class="social-icons">
+        <a href="https://www.youtube.com/">
+            <img src="images/youtube-logo-youtube-icon-transparent-free-png.webp" alt="YouTube" />
+        </a>
+        <a href="https://www.tiktok.com/">
+            <img src="images/tiktok-logo-thin.svg" alt="TikTok" />
+        </a>
+        <a href="https://www.instagram.com/">
+            <img src="images/black-and-white-outline-instagram-app-logo-icon-7017516951369307x990iaok2.png" alt="Instagram" />
+        </a>
+        </div>
+    </div>
+
+
+    <div class="footer-nav"> <!--this is a nav in the footer and contains the same things as the header-->
+        <ul>
+        <li><a href="articles.html">home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="login-signup.html">login</a></li>
+        <li><a href="checkout.html">Cart</a></li>
+        </ul>
+    </div>
+
+
+    <div class="footer-bottom">
+        <ul class="footer-links">
+        <li><p>&copy; 2024 nihal all rights reserved.</p></li>
+        <li><p>all images were generated using chatgpt</p></li>
+        <li><a href="under-construction.html">Terms of use</a></li>
+        <li><a href="under-construction.html">Privacy policy</a></li>
+        <li><a href="under-construction.html">shipping and returns policy</a></li>
+        </ul>
+    </div>
+    </footer>
+
+  <script>
+    const header = document.querySelector('header'); //again the same script and was discussed before
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 150) {
+        header.classList.add('scroll');
+      } else {
+        header.classList.remove('scroll');
+      }
+    });
+
+    
+
+  </script>
+</body>
+</html>

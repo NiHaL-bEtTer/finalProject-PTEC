@@ -1,0 +1,103 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart | Heritage</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <style>
+        body {margin-top: 120px;
+
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+
+        }
+        
+
+        .under {
+            height: 100vh;
+            padding: 2%;
+        }
+    </style>
+    </head>
+    <body>
+    <header> <!--this  is the header-->
+    <div class="header-content"> <!--contains all teh stuff inside the header-->
+            <button class="menu-toggle" aria-label="Toggle menu">☰</button> <!-- this is the hamburger menu, only appears on smaller screens-->
+            <nav class="main-nav"> <!--this nav is structured in multiple navs-->
+            <ul> <!--the first contains these list items that are quicklinks-->
+                <li><a href="under-construction.html">about us</a></li>
+                <li><a href="articles.html"></a>shop</li>
+                <li><a href="login-signup.html">login</a></li> <!--calls the funtion to go to the other page-->
+            </ul>
+            </nav>
+            <div class="logo-container"> <!--this is the heritage logo, if u click it, it takes u to articles.html-->
+            <a href="articles.html">
+                <img src="images/brand logo.png" alt="Heritage logo" class="logo">
+            </a>
+            </div>
+            <nav class="icon-menu"> <!--the next nav here contains icons such as the bag and login-->
+            <img src="images/free-user-icon-972-thumb.png" alt="this is a logo outline of a person, used for login" class="icons"  onclick="verifyLogin()">
+            
+                <a href="checkout.html">
+                <img src="images/shopping-bag.svg" alt="bag" class="icons">
+            </a>
+            
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <img class="under" src="images/under-contruction.png" alt="this is an image stating that this page is under construction" >
+    </main>
+
+    <footer> <!--the footer was already explained in product.html-->
+    
+    <div class="footer-top">
+        <div class="brand-info">
+        <img src="images/brand logo.png" alt="Heritage Clothing logo" class="logo2" />
+        <p>Short paragraph of the brand and what it represents.</p>
+        </div>
+        
+        <div class="social-icons">
+        <a href="https://www.youtube.com/">
+            <img src="images/youtube-logo-youtube-icon-transparent-free-png.webp" alt="YouTube" />
+        </a>
+        <a href="https://www.tiktok.com/">
+            <img src="images/tiktok-logo-thin.svg" alt="TikTok" />
+        </a>
+        <a href="https://www.instagram.com/">
+            <img src="images/black-and-white-outline-instagram-app-logo-icon-7017516951369307x990iaok2.png" alt="Instagram" />
+        </a>
+        </div>
+    </div>
+
+    <div class="footer-nav"> <!--this is a nav in the footer and contains the same things as the header-->
+        <ul>
+        <li><a href="articles.html">home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="login-signup.html">login</a></li>
+        <li><a href="checkout.html">Cart</a></li>
+        </ul>
+    </div>
+
+
+    <div class="footer-bottom">
+        <ul class="footer-links">
+        <li><p>&copy; 2024 nihal all rights reserved.</p></li>
+        <li><a href="under-construction.html">Terms of use</a></li>
+        <li><a href="under-construction.html">Privacy policy</a></li>
+        <li><a href="under-construction.html">shipping and returns policy</a></li>
+        </ul>
+    </div>
+    </footer>
+
+    
+    </body>
+    </html>

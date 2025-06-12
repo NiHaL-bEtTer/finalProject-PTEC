@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout | Heritage</title>
+  <link rel="stylesheet" href="styles.css" /> <!--basically the same-->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="nav-mnu.js" defer ></script>
+  <script src="main.js"></script>
+  <style>
+body {  /*adds margin to the top of the body*/
+  margin-top: 10em;
+  
+}
+.content {  /*displays the content div as a grid, the main takes up 60% width and the aside takes up 40%*/
+  display: grid;
+  grid-template-columns: 60% 40%;
+  height: auto; 
+  
+}
+
+
+@media (max-width: 1023px) {  /*another media query for screen resizing, sets the grid to only have 1 column when it resizes so the 2nd column from the largerscren gets pushed to the bottom,*/
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .item1{
+    order: 2;  /*also reverses the order so the cart is not at the top and the info at the bottom*/
+  }
+
+  .item2{
+    order: 1;
+  }
+
+}
+
+
+
+ /*basic styling for the checkout button (orderbuton)*/
+.checkout-button {
+  background: #9acbd0;
+  color:black;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 6px;
+  padding: 1rem;
+  cursor: pointer;
+  
+}
+ /*displays the button to be a block element so it takes the full line, takes full width, then the rest is basic styling and a ease transition*/
+.remove-all-button {
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;       
+  background: #9acbd0;
+  border: none;
+  color: black;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:  transform 0.2s ease;
+}
+ /*translates the button up when u hover*/
+.remove-all-button:hover,
+.checkout-button:hover {
+  transform: translateY(-2px);
+}
+
+ /*basically the same styling as the remove all button but with different colors*/
+.content aside .checkout-button {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;         
+  background: #e7e5e1;
+  color: black;
+  border: none;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header> <!--this  is the header-->
+      <div class="header-content"> <!--contains all teh stuff inside the header-->
+            <button class="menu-toggle" aria-label="Toggle menu">☰</button> <!-- this is the hamburger menu, only appears on smaller screens-->
+            <nav class="main-nav"> <!--this nav is structured in multiple navs-->
+            <ul> <!--the first contains these list items that are quicklinks-->
+                <li><a href="under-construction.html">about us</a></li>
+                <li><a href="articles.html"></a>shop</li>
+                <li><a href="login-signup.html">login</a></li> <!--calls the funtion to go to the other page-->
+            </ul>
+            </nav>
+            <div class="logo-container"> <!--this is the heritage logo, if u click it, it takes u to articles.html-->
+            <a href="articles.html">
+                <img src="images/brand logo.png" alt="Heritage logo" class="logo">
+            </a>
+            </div>
+            <nav class="icon-menu"> <!--the next nav here contains icons such as the bag and login-->
+            <img src="images/free-user-icon-972-thumb.png" alt="this is a logo outline of a person, used for login" class="icons"onclick="verifyLogin()">
+            
+                <a href="checkout.html">
+                <img src="images/shopping-bag.svg" alt="bag" class="icons">
+            </a>
+            
+            </nav>
+        </div>
+    </header>
+  
+  <div class="content"> <!--contains the main and the aside-->
+    <main class="payment-delivery item1"> <!--this is for the info on delivery and payment-->
+      <h1 class="payment-heading">DELIVERY INFO</h1> <!--heading for the main-->
+      <form>
+        <div class="form-grid"> <!--these are a bunch of inputs that are displayed using grid area , most of them are text and then is the select and a button that is the order button-->
+          <input type="text" id="country" placeholder="Country">
+          <input type="text" id="first-name" placeholder="First Name">
+          <input type="text" id="last-name" placeholder="Last Name">
+          <input type="text" id="province" placeholder="Province">
+          <input type="text" id="city" placeholder="City">
+          <input type="text" id="postal-code" placeholder="Postal Code">
+          <input type="text" id="phone-number" placeholder="Phone Number">
+          <select id="payment-option">
+            <option>Credit Card</option>
+            <option>PayPal</option>
+            <option>Other</option>
+          </select>
+          <button type="submit" id="checkout-id" class="checkout-button" onclick="order()" >Order</button>
+        </div>
+      </form>
+    </main>
+
+    <aside class="item2"> <!--this is the aside and has the info on the product in the cart and pricing and total money-->
+      <div id="checkoutCartItems"></div>
+
+      <div class="apply-coupn"> <!--this is a div that contains a text input and a button, this is for applying discount codes-->
+        <input type="text" class="enter-coupon" placeholder="Enter Discount Code">
+        <button class="apply-button" onclick="applyCoupon()">apply</button> <!--calling function here-->
+      </div>
+
+      <div class="order-total"> <!--this in the aside is where u see the total money, shipping , subtotal and total-->
+        <div class="total-holder">
+          <div class="row">
+            <div class="line-1"><h2>Subtotal</h2></div>
+            <div class="line-2"><p id="subtotalValue">$0.00</p></div>
+          </div>
+          <div class="row">
+            <div class="line-1"><h2>Shipping</h2></div>
+            <div class="line-2"><p id="shippingValue">$0.00</p></div>
+          </div>
+          <div class="row">
+            <div class="line-1"><h2>Total</h2></div>
+            <div class="line-2"><p id="totalValue">$0.00</p></div>
+          </div>
+        </div>
+      </div>
+
+      <button id="clearCart" class="remove-all-button">Remove All</button> <!--here we have the remove all button which removes everything from the cart and a continue shopping button which takes u to product.html-->
+      <button onclick="location.href='product.html'" class="checkout-button">Continue Shopping</button>
+    </aside>
+  </div>
+
+  
+  <footer><!--the footer is the same on the other pages-->
+    
+    <div class="footer-top"> 
+        <div class="brand-block">
+        <img src="images/brand logo.png" alt="Heritage Clothing logo" class="logo2" />
+        <p>Short paragraph of the brand and what it represents.</p>
+        </div>
+        
+        <div class="social-icons">
+        <a href="https://www.youtube.com/">
+            <img src="images/youtube-logo-youtube-icon-transparent-free-png.webp" alt="YouTube" />
+        </a>
+        <a href="https://www.tiktok.com/">
+            <img src="images/tiktok-logo-thin.svg" alt="TikTok" />
+        </a>
+        <a href="https://www.instagram.com/">
+            <img src="images/black-and-white-outline-instagram-app-logo-icon-7017516951369307x990iaok2.png" alt="Instagram" />
+        </a>
+        </div>
+    </div>
+
+
+    <div class="footer-nav"> <!--this is a nav in the footer and contains the same things as the header-->
+        <ul>
+        <li><a href="articles.html">home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="login-signup.html">login</a></li>
+        <li><a href="checkout.html">Cart</a></li>
+        </ul>
+    </div>
+
+
+    <div class="footer-bottom">
+        <ul class="footer-links">
+        <li><p>&copy; 2024 nihal all rights reserved.</p></li>
+        <li><p>all images were generated using chatgpt</p></li>
+        <li><a href="under-construction.html">terms of use</a></li>
+        <li><a href="under-construction.html">privacy policy</a></li>
+        <li><a href="under-construction.html">shipping and returns policy</a></li>
+        </ul>
+    </div>
+    </footer>
+
+  
+<script>
+  // Wait for the HTML document to be fully loaded before running the checkout script
+document.addEventListener('DOMContentLoaded', () => {
+  // as we saved the values from the product page and cart,js we recall those values here
+  const qty  = parseInt(localStorage.getItem('cartQuantity')) || 0;
+  const size = localStorage.getItem('cartSize')       || '';
+  const img  = localStorage.getItem('cartImageSrc')   || '';
+
+  // save the element into the constant variable by the name of container
+  const container = document.getElementById('checkoutCartItems');
+
+  // If there are no items in the cart, show an empty message
+  if (qty === 0) {
+    container.innerHTML = '<p>Your cart is empty.</p>';
+  } else {
+    // if tgere is stuff in the cart then we multiply the quantity by 50 as all the products are 50$ currently lol
+    const lineTotal = 50 * qty;
+
+    // honestly this is pretty cool, we can change change the html inside anything, here we just update the innter html using backtic concatination inserting variable, shoutout to youtube :)
+    container.innerHTML = `
+      <div class="product-summary">
+        <div class="product-image">
+          <img src="${img}" alt="Black Heritage Hoodie" class="checkout-image">
+        </div>
+        <div class="product-info">
+          <h2>Black Heritage Hoodie</h2>
+          <p>size: ${size}</p>
+          <p>quantity: ${qty}</p>
+          <p>subtotal: $${lineTotal.toFixed(2)}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  // here we are setting a fixed shipping price in a variable
+  const shipping = 15.99;
+
+  // here we are getting the p's by id and updating thier values using our variables
+  document.getElementById('subtotalValue').textContent = '$' + (50 * qty).toFixed(2);
+  document.getElementById('shippingValue').textContent = '$' + shipping.toFixed(2);
+  document.getElementById('totalValue').textContent    = '$' + ((50 * qty) + shipping).toFixed(2); //toFixed basicaly means its rounding the numbers to decimal places and the 2 represents that its rounding to 2 decimal places
+
+  // here we are using a add even listener for our clear cart button, when it clicked we remove the following items from the local storage making them not exist in the first plave so they cant be pulled from loca storage
+  document.getElementById('clearCart').addEventListener('click', () => {
+    // super smarts
+    localStorage.removeItem('cartQuantity');
+    localStorage.removeItem('cartSize');
+    localStorage.removeItem('cartImageSrc');
+
+    // after we remove those values from local storage, we need some default/place holding values so we again change the intter html of teh container to just a paragraph stating that the cart is empty
+    container.innerHTML = '<p>Your cart is empty.</p>';
+    document.getElementById('subtotalValue').textContent = '$0.00'; //setting values for those p's to 0,
+    document.getElementById('shippingValue').textContent = '$0.00';
+    document.getElementById('totalValue').textContent    = '$0.00';
+  });
+});
+
+// this is a function for the order button
+function order() {
+  // when they submit their order, it alers that "order submitted and takes u to under.construction.html"
+  alert('Order Submitted');
+  window.location.href = 'under-construction.html';
+}
+
+// this is a function to apply coupon codes
+function applyCoupon() {
+  // making constant variables with the elements with the class of the enter coupon and apply button
+  const inputEl = document.querySelector('.enter-coupon');
+  const btnEl   = document.querySelector('.apply-button');
+  // saves the value in the input in the varibale named code, also trims all white space and makes the string uppercase so both lower case and upper case work
+  const code    = inputEl.value.trim().toUpperCase();
+
+  // this is an if statment which basically is that if the variable code is equal to the string 'FINALPROJECT20' 
+  if (code === 'FINALPROJECT20') {
+    // then we save the value from the element that has the id of tota value , then we make totalEl a numerical vaulue usinga unary opererator then slicing the first chracter which would be a dollar sign, we need to do this because in the next part we need to take the 20% away and if its still a string and not a number we will get NaN or nnot a number
+    const totalEl = document.getElementById('totalValue');
+    const price = +totalEl.textContent.slice(1);
+
+    // here we saving another variable that has the value of price * 80% then updating the text content of totalEl
+    const discounted = (price * 0.8).toFixed(2);
+    totalEl.textContent = '$' + discounted;
+
+  
+    
+    alert('Discount code applied');
+  } else {
+    // if the code is wong then we  Inform the user if the code is invalid
+    alert('Sorry, that code is invalid.');
+  }
+}
+
+
+
+</script>
+<script src="nav-mnu.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Heritage | Login</title>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet" />
+  <script src="main.js" defer></script>
+  <script src="nav-mnu.js"defer></script>
+
+  
+  <link rel="stylesheet" href="styles.css" /> 
+
+  <style>
+    body {
+      margin-top: 40px;
+    
+    }
+    header {
+      height: 120px;
+    }
+
+    .login-holder {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 120px); 
+      padding-top: 60px;
+    }
+
+    .login {
+      background-color: rgba(255, 255, 255, 0.99);
+      border-radius: 30px;
+      padding: 40px 30px;
+      width: 75%;
+      max-width: 700px;
+      height: 70vh;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+    }
+
+    .logo {
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .text-left {
+      text-align: left;
+      width: 100%;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 2.6rem;
+      
+    }
+
+    p {
+      font-size: 1.8rem;
+      margin: 5px 0 15px;
+      color: #444;
+    }
+
+    .labutton{
+      background-color: #f2f2f1;
+      border: none;
+      padding: 10px 18px;
+      width: 100%;
+      border-radius: 25px;
+      font-size: 1.8rem;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: 0.3s ease;
+      border: 2px solid #9acbd0;
+    }
+
+    .labutton::placeholder {
+      color: black;
+    }
+
+    .google {
+      background: #2A7B9B;
+      background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+      border: none;
+      padding: 10px 18px;
+      width: 100%;
+      border-radius: 25px;
+      font-size: 1.8rem;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .labutton:hover {
+      filter: brightness(90%);
+    }
+
+    #or {
+      font-size: 1.6rem;
+      color: #888;
+    }
+
+    .dont-have-account {
+      font-size: 1.4rem;
+      color: #444;
+      margin-top: auto;
+    }
+
+    .dont-have-account a {
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .dont-have-account a:hover {
+      text-decoration: underline;
+    }
+
+    .next {
+      padding: 10px;
+      background-color: #9acbd0;
+      width: 50%;
+      border: none;
+      border-radius: 25px;
+      margin-top: 40px;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <header> <!--this  is the header-->
+      <div class="header-content"> <!--contains all teh stuff inside the header-->
+            <button class="menu-toggle" aria-label="Toggle menu">☰</button> <!-- this is the hamburger menu, only appears on smaller screens-->
+            <nav class="main-nav"> <!--this nav is structured in multiple navs-->
+            <ul> <!--the first contains these list items that are quicklinks-->
+                <li><a href="under-construction.html">about us</a></li>
+                <li><a href="product.html"></a>shop</li>
+                <li><a href="login-signup.html">login</a></li> <!--calls the funtion to go to the other page-->
+            </ul>
+            </nav>
+            <div class="logo-container"> <!--this is the heritage logo, if u click it, it takes u to articles.html-->
+            <a href="articles.html">
+                <img src="images/brand logo.png" alt="Heritage logo" class="logo">
+            </a>
+            </div>
+            <nav class="icon-menu"> <!--the next nav here contains icons such as the bag and login-->
+            <img src="images/free-user-icon-972-thumb.png" alt="this is a logo outline of a person, used for login" class="icons" onclick="verifyLogin()">
+            
+                <a href="checkout.html">
+                <img src="images/shopping-bag.svg" alt="bag" class="icons">
+            </a>
+            
+            </nav>
+        </div>
+    </header>
+
+  
+  <div class="login-holder">
+    <div class="login">
+        <a href="product.html"><img src="images/brand logo.png" alt="Heritage Logo" class="logo" /></a>
+
+      <div class="text-left">
+        <h2>log in</h2>
+        <p>select how you want to log in</p>
+      </div>
+
+      <input class="labutton" type="email" placeholder="enter email">
+      <input class="labutton" type="password" placeholder="enter password">
+      <div id="or">or</div>
+      <button class="google"><a href="under-construction.html">sign in with google</a></button>
+
+      <button class="next" onclick="login()">next</button>
+
+      <div class="dont-have-account">
+        don't have an account? <a href="#">sign up here</a>
+      </div>
+    </div>
+  </div>
+
+  <footer> <!--this ist he footer-->
+    
+    <div class="footer-top"> <!--this is the top of the footer and contains the heritage logo and a short description of the brand-->
+        <div class="brand-info">
+        <img src="images/brand logo.png" alt="Heritage Clothing logo" class="logo2" />
+        <p>taking you back to the roots</p>
+        </div>
+        
+        <div class="social-icons"> <!--this part of the footer contains icons that take u to the brands socials such as tiktokm insta, and youtube, images wrapped in anchors-->
+        <a href="https://www.youtube.com/">
+            <img src="images/youtube-logo-youtube-icon-transparent-free-png.webp" alt="YouTube" />
+        </a>
+        <a href="https://www.tiktok.com/">
+            <img src="images/tiktok-logo-thin.svg" alt="TikTok" />
+        </a>
+        <a href="https://www.instagram.com/">
+            <img src="images/black-and-white-outline-instagram-app-logo-icon-7017516951369307x990iaok2.png" alt="Instagram" />
+        </a>
+        </div>
+    </div>
+
+
+    <div class="footer-nav"> <!--this is a nav in the footer and contains the same things as the header-->
+        <ul>
+        <li><a href="articles.html">home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="login-signup.html">login</a></li>
+        <li><a href="checkout.html">Cart</a></li>
+        </ul>
+    </div>
+
+
+    <div class="footer-bottom"> <!--this is the bottom of teh foter and shows the copyright symbol and links to some of the companies policies-->
+        <ul class="footer-links">
+        <li><p>&copy; 2024 nihal all rights reserved.</p></li>
+        <li><p>all images were generated using chatgpt</p></li>
+        <li><a href="under-construction.html">Terms of use</a></li>
+        <li><a href="under-construction.html">Privacy policy</a></li>
+        <li><a href="under-construction.html">shipping and returns policy</a></li>
+        </ul>
+    </div>
+    </footer>
+  
+  <script>
+    function login () {
+      
+    
+    localStorage.setItem('isLoggedIn', 'true');
+    
+    alert('You are logged in!');
+
+    window.location.href = 'articles.html';
+  }
+
+    
+  </script>
+</body>
+</html>
